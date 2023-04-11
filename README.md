@@ -8,6 +8,7 @@ The application runs on next js and sanity CMS.
 ###Frontend
 - Search for products
 - Sort products
+- Paginate through products
 - Show more information about an article.
 - Responsiveness for desktop and mobile phone
 
