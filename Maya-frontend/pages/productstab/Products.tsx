@@ -1,12 +1,12 @@
-import React from "react";
-import Construction from "@/components/construction/Construction";
+import React from "react"
+import Construction from "@/components/construction/Construction"
 
 const Products = () => {
   return (
     <>
-      <Construction color='green' />
+      <Construction />
     </>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products
