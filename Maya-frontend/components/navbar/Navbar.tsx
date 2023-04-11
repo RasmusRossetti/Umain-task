@@ -1,15 +1,33 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import MenuIcons from "./MenuIcons";
+import Search from "./Search";
 
-export default function Navbar() {
+interface Props {
+  setSearchQuery: (searchQuery: string) => void;
+  searchQuery: string;
+}
+
+enum Tab {
+  MENS = "/menstab/Mens",
+  WOMENS = "/womenstab/Womens",
+  PRODUCTS = "/productstab/Products",
+  ABOUT = "/abouttab/About",
+  BLOG = "/blogtab/Blog"
+}
+
+export default function Navbar({ setSearchQuery, searchQuery }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  {
-    console.log(isMenuOpen);
-  }
+
+  const handleSearchQueryChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchQuery(event.target.value);
+  };
 
   return (
     <div className='bg-mayawhite'>
@@ -20,68 +38,39 @@ export default function Navbar() {
           </h1>
         </Link>
         <div className='hidden md:flex justify-between items-center font-medium text-4xl gap-12'>
-          <Link href='/menstab/Mens'>
+          <Link href={Tab.MENS}>
             <p className='transition ease-in-out hover:text-slate-300 cursor-pointer'>
               MAN
             </p>
           </Link>
-          <Link href='/womenstab/Womens'>
+          <Link href={Tab.WOMENS}>
             <p className='transition ease-in-out hover:text-slate-300 cursor-pointer'>
               WOMEN
             </p>
           </Link>
-          <Link href='/productstab/Products'>
+          <Link href={Tab.PRODUCTS}>
             <p className='transition ease-in-out hover:text-slate-300 cursor-pointer'>
               PRODUCTS
             </p>
           </Link>
-          <Link href='/abouttab/About'>
+          <Link href={Tab.ABOUT}>
             <p className='transition ease-in-out hover:text-slate-300 cursor-pointer'>
               ABOUT US
             </p>
           </Link>
-          <Link href='/blog/Blog'>
+          <Link href={Tab.BLOG}>
             <p className='transition ease-in-out hover:text-slate-300 cursor-pointer'>
               BLOG
             </p>
           </Link>
         </div>
         <div className='flex justify-center md:hidden '>
-          <button onClick={toggleMenu}>
-            {isMenuOpen ? (
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='h-8 w-8 fill-current text-gray-700'
-                viewBox='0 0 20 20'
-                fill='currentColor'
-              >
-                <path
-                  d='M5.5 5.5L14.5 14.5M14.5 5.5L5.5 14.5'
-                  stroke='currentColor'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='h-8 w-8 fill-current text-gray-700'
-                viewBox='0 0 20 20'
-                fill='currentColor'
-              >
-                <path
-                  fillRule='evenodd'
-                  d='M1.625 3.125h16.75a.625.625 0 110 1.25H1.625a.625.625 0 110-1.25zm0 5h16.75a.625.625 0 110 1.25H1.625a.625.625 0 110-1.25zm0 5h16.75a.625.625 0 110 1.25H1.625a.625.625 0 110-1.25z'
-                  clipRule='evenodd'
-                />
-              </svg>
-            )}
-          </button>
+          <MenuIcons toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
         </div>
-        <div className='hidden md:block'>
-          <input className='text-2xl p-2' placeholder='search' type='text' />
-        </div>
+        <Search
+          searchQuery={searchQuery}
+          handleSearchQueryChange={handleSearchQueryChange}
+        />
       </div>
       {isMenuOpen && (
         <div
@@ -90,23 +79,23 @@ export default function Navbar() {
           } `}
         >
           <div className='flex flex-col items-center pt-8 pb-6 text-xl '>
-            <Link href='/menstab/Mens'>
+            <Link href={Tab.MENS}>
               <p className='hover:animate-pulse cursor-pointer py-2'>MAN</p>
             </Link>
-            <Link href='/womenstab/Womens'>
+            <Link href={Tab.WOMENS}>
               <p className='hover:animate-pulse cursor-pointer py-2'>WOMEN</p>
             </Link>
-            <Link href='/productstab/Products'>
+            <Link href={Tab.PRODUCTS}>
               <p className='hover:animate-pulse cursor-pointer py-2'>
                 PRODUCTS
               </p>
             </Link>
-            <Link href='/about/About'>
+            <Link href={Tab.ABOUT}>
               <p className='hover:animate-pulse cursor-pointer py-2'>
                 ABOUT US
               </p>
             </Link>
-            <Link href='/blog/Blog'>
+            <Link href={Tab.BLOG}>
               <p className='hover:animate-pulse cursor-pointer py-2'>BLOG</p>
             </Link>
           </div>

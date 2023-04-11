@@ -1,12 +1,12 @@
 import Construction from "@/components/construction/Construction";
 import React from "react";
 
-const about = () => {
+const Blog = () => {
   return (
     <>
-      <Construction color='lime' />
+      <Construction color='purple' />
     </>
   );
 };
 
-export default about;
+export default Blog;

@@ -3,26 +3,9 @@ import { useRouter } from "next/router";
 import { client, urlFor } from "../../client";
 import Icons from "@/components/icons/Icons";
 import { GetStaticPropsContext } from "next";
+import { SlugProps } from "@/types/props";
 
-interface Props {
-  slug: any;
-  current: string;
-  product: {
-    _id: string;
-    description: string;
-    productName: string;
-    price: number;
-    gender: string;
-    sort: string;
-    slug: string;
-    image: {
-      asset: {
-        _ref: string;
-      };
-    };
-  };
-}
-const Product = ({ product }: Props) => {
+const Product = ({ product }: SlugProps) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -35,7 +18,7 @@ const Product = ({ product }: Props) => {
         <img
           src={urlFor(product.image).width(1000).url()}
           alt=''
-          className='lg:w-1/2 w-full object-cover object-center rounded border border-gray-200'
+          className=' lg:w-1/2 w-full h-[500px] object-cover object-center rounded border border-gray-200'
         />
         <div className='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
           <h1 className=' title-font mb-1 text-gray-800 font-semibold text-4xl uppercase max-w-lg'>
@@ -108,7 +91,7 @@ const Product = ({ product }: Props) => {
 export async function getStaticPaths() {
   const products = await client.fetch(groq`*[_type == "products"]{slug}`);
 
-  const paths = products.map((product: Props) => ({
+  const paths = products.map((product: SlugProps) => ({
     params: { slug: product.slug.current }
   }));
 
