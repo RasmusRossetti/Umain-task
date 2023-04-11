@@ -11,6 +11,7 @@ const FilterButtons = ({ selectedFilter, handleFilterClick }: Props) => {
     <div className='flex justify-between items-center w-[300px] hidden md:flex'>
       <h1 className='text-mayablack font-semibold  text-4xl'>{Sort.Sorting}</h1>
       <button
+        data-testid='recycled'
         className={`text-lg p-2 font-semibold border-[2px] ${
           selectedFilter === Sort.Recycled
             ? "text-white bg-green-500 border-green-500"
@@ -21,6 +22,7 @@ const FilterButtons = ({ selectedFilter, handleFilterClick }: Props) => {
         {Sort.Recycled}
       </button>
       <button
+        data-testid='new'
         className={`text-lg p-2 font-semibold border-[2px] ${
           selectedFilter === Sort.New
             ? "text-white bg-purple-500 border-purple-500"
