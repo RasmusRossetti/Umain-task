@@ -8,3 +8,10 @@ export enum Paginate {
   Next = "NEXT PAGE",
   ShowMore = "Show more"
 }
+export enum Tab {
+  MENS = "/menstab/Mens",
+  WOMENS = "/womenstab/Womens",
+  PRODUCTS = "/productstab/Products",
+  ABOUT = "/abouttab/About",
+  BLOG = "/blogtab/Blog"
+}

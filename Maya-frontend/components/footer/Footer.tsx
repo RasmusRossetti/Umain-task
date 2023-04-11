@@ -1,13 +1,6 @@
+import { Tab } from "@/enums/enum"
 import Link from "next/link"
 import React from "react"
-
-enum Tab {
-  MENS = "/menstab/Mens",
-  WOMENS = "/womenstab/Womens",
-  PRODUCTS = "/productstab/Products",
-  ABOUT = "/abouttab/About",
-  BLOG = "/blogtab/Blog"
-}
 
 const Footer = () => {
   return (
