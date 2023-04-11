@@ -6,7 +6,7 @@ The application runs on next js and sanity CMS.
 ## Features
 
 In the front end you can:
-- search for products
+- Search for products
 - Sort products
 - Show more information about an article.
 - Responsiveness for desktop and mobile phone
