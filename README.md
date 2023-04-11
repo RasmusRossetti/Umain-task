@@ -15,7 +15,7 @@ The application runs on next js and sanity CMS.
 ###Backend
 - Update products
 - Change schema
-- Add more Tables and schemas
+- Add more tables and schemas
 
 ## Available Scripts
 
