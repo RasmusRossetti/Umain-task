@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import Link from "next/link"
-import MenuIcons from "./MenuIcons"
 import Search from "./Search"
 import { Tab } from "@/enums/enum"
+import MenuIcons from "./MenuIcons"
 
 interface Props {
   setSearchQuery: (searchQuery: string) => void

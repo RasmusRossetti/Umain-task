@@ -1,6 +1,6 @@
 import groq from "groq"
 import { useRouter } from "next/router"
-import { client, urlFor } from "../../client"
+import { client, urlFor } from "@/client"
 import Icons from "@/components/icons/Icons"
 import { GetStaticPropsContext } from "next"
 import { SlugProps } from "@/models/slugProps"

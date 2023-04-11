@@ -1,13 +1,13 @@
 import { urlFor } from "@/client"
 import { Paginate } from "@/enums/enum"
-import { Props } from "@/models/productProps"
+import { ProductProps } from "@/models/productProps"
 import Link from "next/link"
 import React from "react"
 
 const ProductCard = ({
   visibleProducts
 }: {
-  visibleProducts: Props["products"]
+  visibleProducts: ProductProps["products"]
 }) => {
   return (
     <div
