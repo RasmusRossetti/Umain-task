@@ -1,19 +1,19 @@
-import groq from "groq";
-import { client, urlFor } from "../client";
-import Header from "@/components/header/Header";
-import Section from "@/components/section/Section";
-import React, { useState } from "react";
-import { Props } from "./../types/props";
-import { Sort } from "./../types/enum";
-import Pagination from "@/components/pagination/Pagination";
-import FilterButtons from "@/components/filterbuttons/FilterButtons";
-import ProductCard from "@/components/productCard/ProductCard";
+import groq from "groq"
+import { client, urlFor } from "../client"
+import Header from "@/components/header/Header"
+import Section from "@/components/section/Section"
+import React, { useState } from "react"
+import { ProductProps } from "../models/productProps"
+import { Sort } from "../enums/enum"
+import Pagination from "@/components/pagination/Pagination"
+import FilterButtons from "@/components/filterbuttons/FilterButtons"
+import ProductCard from "@/components/productCard/ProductCard"
 
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 4
 
-const Index = ({ products, searchQuery }: Props) => {
-  const [selectedFilter, setSelectedFilter] = useState<Sort | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+const Index = ({ products, searchQuery }: ProductProps) => {
+  const [selectedFilter, setSelectedFilter] = useState<Sort | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
 
   const filteredProducts = selectedFilter
     ? products.filter(
@@ -23,32 +23,32 @@ const Index = ({ products, searchQuery }: Props) => {
         product.productName
           .toLowerCase()
           .includes(searchQuery.toLowerCase() || "")
-      );
+      )
 
-  const pageCount = Math.ceil(filteredProducts.length / PAGE_SIZE);
+  const pageCount = Math.ceil(filteredProducts.length / PAGE_SIZE)
 
   const handleFilterClick = (filter: Sort) => {
-    setSelectedFilter((prevFilter) => (prevFilter === filter ? null : filter));
-    setCurrentPage(1);
-  };
+    setSelectedFilter((prevFilter) => (prevFilter === filter ? null : filter))
+    setCurrentPage(1)
+  }
 
   const handlePageClick = (page: number) => {
     if (page < 1 || page > pageCount) {
-      return;
+      return
     }
-    setCurrentPage(page);
-  };
+    setCurrentPage(page)
+  }
 
-  const startIndex = (currentPage - 1) * PAGE_SIZE;
-  const endIndex = startIndex + PAGE_SIZE;
-  const visibleProducts = filteredProducts.slice(startIndex, endIndex);
+  const startIndex = (currentPage - 1) * PAGE_SIZE
+  const endIndex = startIndex + PAGE_SIZE
+  const visibleProducts = filteredProducts.slice(startIndex, endIndex)
 
   return (
     <>
       <Header />
       <Section />
-      <div className='flex w-10/12 m-auto justify-between'>
-        <h1 className='font-semibold  text-4xl text-mayablack'>
+      <div className="flex w-10/12 m-auto justify-between">
+        <h1 className="font-semibold  text-4xl text-mayablack">
           FEATURED PRODUCTS
         </h1>
         <FilterButtons
@@ -56,8 +56,8 @@ const Index = ({ products, searchQuery }: Props) => {
           handleFilterClick={handleFilterClick}
         />
       </div>
-      <div className='bg-white'>
-        <div className='w-10/12 m-auto py-8 '>
+      <div className="bg-white">
+        <div className="w-10/12 m-auto py-8 ">
           <ProductCard visibleProducts={visibleProducts} />
         </div>
         <Pagination
@@ -66,17 +66,17 @@ const Index = ({ products, searchQuery }: Props) => {
         />
       </div>
     </>
-  );
-};
+  )
+}
 
 export async function getStaticProps() {
-  const products = await client.fetch(groq`*[_type == "products"]`);
+  const products = await client.fetch(groq`*[_type == "products"]`)
 
   return {
     props: {
       products
     }
-  };
+  }
 }
 
-export default Index;
+export default Index
