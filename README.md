@@ -1,13 +1,15 @@
 # Umain-task
 
 This was a E-commerce project made for Umain.
+The application runs on next js and sanity CMS.
 
 ## Features
-This application runs on next js and sanity CMS.
+
 In the front end you can:
 - search for products
 - Sort products
 - Show more information about an article.
+- Responsiveness for desktop and mobile phone
 
 ## Available Scripts
 
@@ -17,6 +19,16 @@ In the project directory of MAYA-frontend, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+In the project directory of Sanity, you can run:
+### `npm install`
+### `npm run dev`
+
+Runs the app in the development mode.\
+Open [ http://localhost:3333]( http://localhost:3333) to view it in your browser.
+To access this current sanity project credentials is needed.
+Otherwise you can replace the config file with your own project.
+
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
