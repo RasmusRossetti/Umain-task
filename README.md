@@ -5,9 +5,9 @@ This was a E-commerce project made for Umain.
 ## Features
 This application runs on next js and sanity CMS.
 In the front end you can:
--search for products
--Sort products
--Show more information about an article.
+- search for products
+- Sort products
+- Show more information about an article.
 
 ## Available Scripts
 
