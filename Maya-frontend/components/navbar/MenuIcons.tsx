@@ -1,6 +1,5 @@
 import Image from "next/image"
 import React from "react"
-import HamburgerMenu from "@/assets/burger-menu.svg"
 import CloseIcon from "@/assets/close-icon.svg"
 
 interface Props {
@@ -19,7 +18,11 @@ const MenuIcons = ({ toggleMenu, isMenuOpen }: Props) => {
           alt="Close icon"
         />
       ) : (
-        <Image priority src={HamburgerMenu} alt="Hamburger icon" />
+        <div className="space-y-2 rotate-180">
+          <div className="w-5 h-0.5  bg-gray-600"></div>
+          <div className="w-8 h-0.5 bg-gray-600"></div>
+          <div className="w-5 h-0.5 bg-gray-600"></div>
+        </div>
       )}
     </button>
   )
