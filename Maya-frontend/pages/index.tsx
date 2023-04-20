@@ -3,15 +3,20 @@ import { client } from "@/client"
 import Header from "@/components/header/Header"
 import Section from "@/components/section/Section"
 import React, { useState } from "react"
-import { ProductProps } from "@/models/productProps"
+import { Product } from "@/models/Products"
 import { Sort } from "@/enums/enum"
 import Pagination from "@/components/pagination/Pagination"
 import FilterButtons from "@/components/filterbuttons/FilterButtons"
 import ProductCard from "@/components/productCard/ProductCard"
 
+interface IndexProps {
+  products: Product[]
+  searchQuery: string
+}
+
 const PAGE_SIZE = 4
 
-const Index = ({ products, searchQuery }: ProductProps) => {
+const Index = ({ products, searchQuery }: IndexProps) => {
   const [selectedFilter, setSelectedFilter] = useState<Sort | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
 

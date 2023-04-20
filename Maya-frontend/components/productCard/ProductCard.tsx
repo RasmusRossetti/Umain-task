@@ -1,6 +1,6 @@
 import { urlFor } from "@/client"
 import { Paginate } from "@/enums/enum"
-import { ProductProps } from "@/models/productProps"
+import { ProductProps } from "@/models/Products"
 import Link from "next/link"
 import React from "react"
 
