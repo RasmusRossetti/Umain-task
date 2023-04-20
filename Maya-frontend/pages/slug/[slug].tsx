@@ -3,7 +3,14 @@ import { useRouter } from "next/router"
 import { client, urlFor } from "@/client"
 import Icons from "@/components/icons/Icons"
 import { GetStaticPropsContext } from "next"
-import { SlugProps } from "@/models/slugProps"
+import { Product } from "@/models/Products"
+
+export interface SlugProps {
+  slug: {
+    current: string
+  }
+  product: Product
+}
 
 const Product = ({ product }: SlugProps) => {
   const router = useRouter()
